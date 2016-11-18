@@ -13,7 +13,8 @@ using namespace std;
 
 
 int main() {
-	future<vector<int>> fut = async(MinMax::makeMoves, 2);
+	Board b;
+	future<vector<int>> fut = async(MinMax::makeMoves, b);
 	printf("hello \n");
 	vector<int> r;
 	r = fut.get();

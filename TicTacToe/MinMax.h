@@ -1,17 +1,25 @@
 #pragma once
 
 #include "Board.h"
+#include "Color.h"
 #include <vector>
 #include <stdlib.h> 
+#include <math.h>
+#include <algorithm> 
 using namespace std;
-
+#define DEPTH 3
 class MinMax
 {
 public:
 	MinMax();
-	static vector<int> moves;
-	static vector<int> makeMoves(int i);
-	vector<int> foo;
+	vector<int> moves;
+	vector<int> makeMoves(Board);
+	int counterMove(Board, int, Color, int, int);
+	vector<int> moveGen(Board b);
+	int heuristic(Board b, Color c, int i, int j);
+	void setMinMax(Color c);
+	Color Min;
+	Color Max;
 	~MinMax();
 };
 

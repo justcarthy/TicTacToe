@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Color.h"
 #include "Board.h"
+#include "MinMax.h"
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -51,49 +52,54 @@ int askPlayer() {
 	return m;
 }
 
-//int main() {
-//	string name;
-//	Board game;
-//	Board other;
-//	int playernum, move;
-//	Player p1;
-//	Player p2;
-//	regex regl("[a-zA-Z]");
-//	cout << "What is your name?\n";
-//	cin >> name;
-//	cout << "Do you want to go first(1) or second(2)?\n";
-//	cin >> playernum; //TODO: plan for different inputs
-//	
-//	if (playernum == 1) {
-//		p1.setColor(Color::RED);
-//		p1.setName(name);
-//		p1.AIflag = false;
-//		
-//		p2.setColor(Color::WHITE);
-//		p1.setName("AI");
-//		p1.AIflag = true;
-//	}
-//	else {
-//		p1.setColor(Color::RED);
-//		p1.setName("AI");
-//		p1.AIflag = true;
-//
-//		p2.setColor(Color::WHITE);
-//		p1.setName(name);
-//		p1.AIflag = false;
-//	}
-//	while (true) {
-//		int i;
-//		DisplayBoard(game);
-//		move = askPlayer();
-//		game.pegs[move].addPiece(p1.getColor());
-//		DisplayBoard(game);
-//		move = askPlayer();
-//		game.pegs[move].addPiece(p2.getColor());
-//
-//
-//	}
+int main() {
+	string name;
+	MinMax AI;
+	Board game;
+	Board other;
+	int playernum, move;
+	Player p1;
+	Player p2;
+	regex regl("[a-zA-Z]");
+	cout << "What is your name?\n";
+	cin >> name;
+	cout << "Do you want to go first(1) or second(2)?\n";
+	cin >> playernum; //TODO: plan for different inputs
+	
+	if (playernum == 1) {
+		p1.setColor(Color::RED);
+		p1.setName(name);
+		p1.AIflag = false;
+		
+		p2.setColor(Color::WHITE);
+		p1.setName("AI");
+		p1.AIflag = true;
+		AI.setMinMax(Color::RED);
+	}
+	else {
+		p1.setColor(Color::RED);
+		p1.setName("AI");
+		p1.AIflag = true;
+		AI.setMinMax(Color::RED);
 
-//	return 0;
-//}
+		p2.setColor(Color::WHITE);
+		p1.setName(name);
+		p1.AIflag = false;
+	}
+	while (true) {
+		if (p1.AIflag == true) {
+			AI.
+		}
+		DisplayBoard(game);
+		move = askPlayer();
+		game.pegs[move].addPiece(p1.getColor());
+		DisplayBoard(game);
+		move = askPlayer();
+		game.pegs[move].addPiece(p2.getColor());
+
+
+	}
+
+	return 0;
+}
 
