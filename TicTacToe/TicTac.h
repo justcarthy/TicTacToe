@@ -7,7 +7,6 @@ public:
 	TicTac();
 	void setColor(int);
 	int getColor();
-
 	~TicTac();
 };
 

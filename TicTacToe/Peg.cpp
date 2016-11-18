@@ -4,7 +4,10 @@
 
 Peg::Peg()
 {
-	TicTac pieces[3];
+	//int i;
+	//for(i = 0; i < 3; i++)
+	//	pieces[i] = TicTac();
+	pegCounter = 0;
 }
 
 void Peg::addPiece(int c)
@@ -14,7 +17,8 @@ void Peg::addPiece(int c)
 
 bool Peg::isFull()
 {
-	return (pegCounter==3);
+
+	return (pegCounter == 3);
 }
 
 int Peg::getColorAt(int i)
@@ -31,9 +35,4 @@ void Peg::removePiece()
 
 Peg::~Peg()
 {
-	int i;
-	for (i = 0; i < 3; i++) {
-		delete &pieces[i];
-	}
-	delete &i;
 }

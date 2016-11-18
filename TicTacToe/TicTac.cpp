@@ -3,7 +3,7 @@
 
 
 TicTac::TicTac() {
-	setColor(-1);
+	color = -1;
 }
 
 void TicTac::setColor(int c)
@@ -18,6 +18,5 @@ int TicTac::getColor()
 
 TicTac::~TicTac()
 {
-	delete &color;
 
 }

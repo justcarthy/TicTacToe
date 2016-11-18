@@ -2,12 +2,13 @@
 #include "TicTac.h"
 class Peg
 {
+private:
 	int pegCounter;
 
 public:
 	
 	Peg();
-	TicTac* pieces;
+	TicTac pieces[3];
 	void addPiece(int);
 	bool isFull();
 	int getColorAt(int);
