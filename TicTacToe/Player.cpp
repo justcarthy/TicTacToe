@@ -2,6 +2,10 @@
 #include "Player.h"
 
 
+Player::Player()
+{
+}
+
 Player::Player(Color, std::string , bool ai)
 {
 	setColor(color);
@@ -15,7 +19,7 @@ void Player::setColor(Color c)
 	color = c;
 }
 
-void Player::setName(char * n)
+void Player::setName(std::string n)
 {
 	name = n;
 }

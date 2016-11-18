@@ -4,14 +4,15 @@
 class Player
 {
 	Color color;
-	char* name;
+	std::string name;
 	int TicTacCount;
 public:
+	Player();
 	Player(Color, std::string, bool);
 	Color getColor() { return color; }
 	void setColor(Color);
-	char* getName() { return name; }
-	void setName(char*);
+	std::string getName() { return name; }
+	void setName(std::string);
 
 	bool movesLeft();
 	bool AIflag;

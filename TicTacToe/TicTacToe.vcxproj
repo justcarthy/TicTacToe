@@ -141,7 +141,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlphaBetaAI.h" />
+    <ClInclude Include="MinMax.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="TicTac.h" />
@@ -150,7 +150,7 @@
     <ClInclude Include="TicTacToe.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlphaBetaAI.cpp" />
+    <ClCompile Include="MinMax.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="test.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

@@ -13,6 +13,7 @@ public:
 
 	Board();
 	int scoreBoard(Color c);
+	bool gameOver();
 	Peg pegs[8];
 	~Board();
 
