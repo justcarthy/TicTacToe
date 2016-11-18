@@ -1,18 +1,18 @@
 #pragma once
 #include "Peg.h"
+#include "Color.h"
 
 class Board
 {
 private:
-	int scoreBottom(int c);
-	int scoreTop(int c);
-	int scorePeg(int c);
-	int scoreDiagonal(int c);
+	int scoreLevels(Color c);
+	int scorePeg(Color c);
+	int scoreDiagonal(Color c);
 
 public:
 
 	Board();
-	void scoreBoard(int c);
+	int scoreBoard(Color c);
 	Peg pegs[8];
 	~Board();
 

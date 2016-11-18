@@ -9,11 +9,11 @@ public:
 	
 	Peg();
 	TicTac pieces[3];
-	void addPiece(int);
+	void addPiece(Color);
 	bool isFull();
-	int getColorAt(int);
+	Color getColorAt(int);
 	void removePiece();
-	int* getCounter() { return &pegCounter; }
+	int getCounter() { return pegCounter; }
 	~Peg();
 };
 

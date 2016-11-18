@@ -3,15 +3,15 @@
 
 
 TicTac::TicTac() {
-	color = -1;
+	color = Color::OTHER;
 }
 
-void TicTac::setColor(int c)
+void TicTac::setColor(Color c)
 {
 	color = c;
 }
 
-int TicTac::getColor()
+Color TicTac::getColor()
 {
 	return color;
 }

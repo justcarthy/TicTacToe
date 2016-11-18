@@ -143,10 +143,10 @@
   <ItemGroup>
     <ClInclude Include="AlphaBetaAI.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="TicTac.h" />
     <ClInclude Include="Peg.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="TicTacToe.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +164,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

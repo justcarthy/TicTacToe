@@ -1,14 +1,15 @@
 #pragma once
 #include <string>
+#include "Color.h"
 class Player
 {
-	int color;
+	Color color;
 	char* name;
 	int TicTacCount;
 public:
-	Player(int, std::string, bool);
-	int getColor() { return color; }
-	void setColor(int i);
+	Player(Color, std::string, bool);
+	Color getColor() { return color; }
+	void setColor(Color);
 	char* getName() { return name; }
 	void setName(char*);
 

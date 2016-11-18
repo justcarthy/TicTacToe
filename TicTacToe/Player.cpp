@@ -1,7 +1,8 @@
 
 #include "Player.h"
 
-Player::Player(int color, std::string , bool ai)
+
+Player::Player(Color, std::string , bool ai)
 {
 	setColor(color);
 	setName(name);
@@ -9,9 +10,9 @@ Player::Player(int color, std::string , bool ai)
 	AIflag = ai;
 }
 
-void Player::setColor(int i)
+void Player::setColor(Color c)
 {
-	color = i;
+	color = c;
 }
 
 void Player::setName(char * n)

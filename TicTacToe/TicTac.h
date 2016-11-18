@@ -1,12 +1,13 @@
 #pragma once
+#include "Color.h"
 
 class TicTac
 {
-	int color;
+	Color color;
 public:
 	TicTac();
-	void setColor(int);
-	int getColor();
+	void setColor(Color);
+	Color getColor();
 	~TicTac();
 };
 

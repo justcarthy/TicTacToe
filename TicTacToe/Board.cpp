@@ -3,27 +3,22 @@
 #include <iostream>
 
 
-int Board::scoreBottom(int c)
+
+int Board::scoreLevels(Color c)
 {
 	int i;
-	if (pegs[2].getColorAt(0) == c) {
-		//for (i = 0; i < 3);
+	for (i = 0; i < 3; i++) {
+		if(pegs[1].getColorAt(i) == Color::RED)
 	}
-	if (pegs[3].getColorAt)
 	return 0;
 }
 
-int Board::scoreTop(int c)
+int Board::scorePeg(Color c)
 {
 	return 0;
 }
 
-int Board::scorePeg(int c)
-{
-	return 0;
-}
-
-int Board::scoreDiagonal(int c)
+int Board::scoreDiagonal(Color c)
 {
 	return 0;
 }
@@ -33,10 +28,10 @@ Board::Board()
 }
 
 
-int Board::scoreBoard(int c)
+int Board::scoreBoard(Color c)
 {
 	int score;
-	score += 
+	return 0;
 }
 
 
