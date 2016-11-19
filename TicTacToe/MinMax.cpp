@@ -9,51 +9,65 @@ MinMax::MinMax()
 
 
 
-vector<int> MinMax::makeMoves(Board b)
+vector<vector<int> > MinMax::makeMoves(Board b)
 {
 	Board next;
-	moves = moveGen(b);
+	vector<vector<int> > returnedList;
+	vector<int>PotentialMoves = moveGen(b);
 	int i;
-	for (i = 0; i < moves.size(); i++) {
-		if (moves[i] > -1) {
+	if (b.isEmpty()) { // If AI is p1 and makes first move
+		for (i = 0; i < returnedList.size(); i++) {
+			if (i == 6) returnedList[i] = { 0, 1, 0 };
+			returnedList[i] = { 0, 6, 0 };
+		}
+		return returnedList;
+	}
+	for (i = 0; i < PotentialMoves.size(); i++) {
+		if (PotentialMoves[i] > -1) {
 			next = b;
-			next.
+			next.pegs[i].addPiece(Color::WHITE);
+			returnedList[i] = counterMove(next, DEPTH, Max, 0, 0);
 		}
 	}
-	return moves;
+	return returnedList;
+
 }
 
-int MinMax::counterMove(Board b, int depth, Color c, int peg ,int spot)
+vector<int> MinMax::counterMove(Board b, int depth, Color c, int peg ,int spot)
 {
 	vector<int> moveList;
+	vector<int> bestValue(3, -1);
+	vector<int> v(3);
 	Board next;
 	moveList = moveGen(b);
-	int bestValue;
-	int i, v, pegSpot;
+	int i;
 
-	if (depth == 0) 
-		return heuristic(b, c, peg, spot);
+	if (depth == 0){
+		bestValue = { heuristic(b, c, peg, spot), peg, spot };
+		return bestValue;
+	}
 	if (c == Max) {
-		bestValue = -INFINITY;
+		bestValue[0] = -INFINITY;
 		for (i = 0; i < moveList.size(); i++) {
 			if (moveList[i] > -1) {
 				next = b;
 				next.pegs[moveList[i]].addPiece(c);
-				v = counterMove(next, depth - 1, Min, i, b.pegs[i].getCounter() - 1);
-				bestValue = max(v, bestValue);
-				return bestValue;
-			}
-		}		
+				v = counterMove(next, depth - 1, Min, i, b.pegs[i].getCounter());
+				if(v[0] > bestValue[0])
+				bestValue = { max(v[0], bestValue[0]), i, b.pegs[i].getCounter() };
+			};
+			return bestValue;
+		}	
 	}
 	else if (c == Min) {
-		bestValue = INFINITY;
+		bestValue[0] = INFINITY;
 		for (i = 0; i < moveList.size(); i++) {
 			if (moveList[i] > -1) {
 				next = b;
 				next.pegs[moveList[i]].addPiece(c);
 
-				v = counterMove(next, depth - 1, Max, i, b.pegs[i].getCounter() - 1); //in case the spot was the first on the peg
-				bestValue = max(v, bestValue);
+				v = counterMove(next, depth - 1, Max, i, b.pegs[i].getCounter())[0]; //in case the spot was the first on the peg
+				bestValue = { max(v, bestValue[0]), i, b.pegs[i].getCounter() };
 				return bestValue;
 			}
 		}

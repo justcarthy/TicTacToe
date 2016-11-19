@@ -15,6 +15,7 @@ public:
 	int scoreBoard(Color c);
 	bool gameOver();
 	Peg pegs[8];
+	bool isEmpty();
 	~Board();
 
 };

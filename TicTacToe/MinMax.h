@@ -12,9 +12,8 @@ class MinMax
 {
 public:
 	MinMax();
-	vector<int> moves;
-	vector<int> makeMoves(Board);
-	int counterMove(Board, int, Color, int, int);
+	vector<vector<int> > makeMoves(Board);
+	vector<int> counterMove(Board, int, Color, int, int);
 	vector<int> moveGen(Board b);
 	int heuristic(Board b, Color c, int i, int j);
 	void setMinMax(Color c);

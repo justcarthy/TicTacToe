@@ -88,7 +88,7 @@ int main() {
 	}
 	while (true) {
 		if (p1.AIflag == true) {
-			AI.
+			
 		}
 		DisplayBoard(game);
 		move = askPlayer();

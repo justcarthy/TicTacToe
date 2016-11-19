@@ -86,6 +86,16 @@ bool Board::gameOver() {
 }
 
 
+bool Board::isEmpty()
+{
+	int i;
+	for (i = 0; i < 8; i++) {
+		if (pegs[i].getCounter != 0)
+			return false;
+	}
+	return true;
+}
+
 Board::~Board()
 {
 }
