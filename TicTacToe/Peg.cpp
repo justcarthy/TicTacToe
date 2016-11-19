@@ -14,8 +14,8 @@ void Peg::addPiece(Color c)
 
 bool Peg::isFull()
 {
-
-	return (pegCounter == 3);
+	if (pegCounter < 3) return false;
+	else return true;
 }
 
 Color Peg::getColorAt(int i)

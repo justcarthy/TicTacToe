@@ -12,11 +12,11 @@
 using namespace std;
 
 
-int main() {
-	Board b;
-	future<vector<int>> fut = async(MinMax::makeMoves, b);
-	printf("hello \n");
-	vector<int> r;
-	r = fut.get();
-}
+//int main() {
+//	Board b;
+//	future<vector<int>> fut = async(MinMax::makeMoves, b);
+//	printf("hello \n");
+//	vector<int> r;
+//	r = fut.get();
+//}
 

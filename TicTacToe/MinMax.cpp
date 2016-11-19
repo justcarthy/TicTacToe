@@ -12,20 +12,20 @@ MinMax::MinMax()
 vector<vector<int> > MinMax::makeMoves(Board b)
 {
 	Board next;
-	vector<vector<int> > returnedList;
+	vector<vector<int> > returnedList(8);
 	vector<int>PotentialMoves = moveGen(b);
 	int i;
 	if (b.isEmpty()) { // If AI is p1 and makes first move
 		for (i = 0; i < returnedList.size(); i++) {
 			if (i == 6) returnedList[i] = { 0, 1, 0 };
-			returnedList[i] = { 0, 6, 0 };
+			else returnedList[i] = { 0, 6, 0 };
 		}
 		return returnedList;
 	}
 	for (i = 0; i < PotentialMoves.size(); i++) {
-		if (PotentialMoves[i] > -1) {
+		if (PotentialMoves[i] != -1) {
 			next = b;
-			next.pegs[i].addPiece(Color::WHITE);
+			next.pegs[i].addPiece(Min);
 			returnedList[i] = counterMove(next, DEPTH, Max, 0, 0);
 		}
 	}
@@ -42,35 +42,35 @@ vector<int> MinMax::counterMove(Board b, int depth, Color c, int peg ,int spot)
 	moveList = moveGen(b);
 	int i;
 
-	if (depth == 0){
+	if (depth == 0 || b.gameOver()){
 		bestValue = { heuristic(b, c, peg, spot), peg, spot };
 		return bestValue;
 	}
 	if (c == Max) {
-		bestValue[0] = -INFINITY;
+		bestValue[0] =-1000;
 		for (i = 0; i < moveList.size(); i++) {
-			if (moveList[i] > -1) {
+			if (moveList[i] != -1) {
 				next = b;
-				next.pegs[moveList[i]].addPiece(c);
+				next.pegs[i].addPiece(c);
 				v = counterMove(next, depth - 1, Min, i, b.pegs[i].getCounter());
 				if(v[0] > bestValue[0])
-				bestValue = { max(v[0], bestValue[0]), i, b.pegs[i].getCounter() };
+					bestValue = { v[0], i, b.pegs[i].getCounter() };
 			};
-			return bestValue;
-		}	
+		}
+		return bestValue;
 	}
 	else if (c == Min) {
-		bestValue[0] = INFINITY;
+		bestValue[0] =1000;
 		for (i = 0; i < moveList.size(); i++) {
-			if (moveList[i] > -1) {
+			if (moveList[i] != -1) {
 				next = b;
-				next.pegs[moveList[i]].addPiece(c);
-
-				v = counterMove(next, depth - 1, Max, i, b.pegs[i].getCounter())[0]; //in case the spot was the first on the peg
-				bestValue = { max(v, bestValue[0]), i, b.pegs[i].getCounter() };
-				return bestValue;
+				next.pegs[i].addPiece(c);
+				v = counterMove(next, depth - 1, Max, i, b.pegs[i].getCounter());
+				if (v[0] < bestValue[0])
+					bestValue = { v[0], i, b.pegs[i].getCounter() };
 			}
 		}
+		return bestValue;
 	}
 }
 
@@ -105,14 +105,14 @@ int MinMax::heuristic(Board b, Color c, int i, int j)
 	Color min;
 	int heuristic;
 	if (c == Color::RED) {
-		max = c;
+		max = Color::RED;
 		min = Color::WHITE;
 	}
 	else {
-		max = c;
-		min = Color::WHITE;
+		max = Color::WHITE;
+		min = Color::RED;
 	}
-	heuristic = (b.scoreBoard(max) - b.scoreBoard(min)) * 20 + postitionalValue(i, j);
+	heuristic = ((b.scoreBoard(max) - b.scoreBoard(min)) * 20) + postitionalValue(i, j);
 	return heuristic;
 }
 
