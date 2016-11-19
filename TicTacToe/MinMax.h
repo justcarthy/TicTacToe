@@ -7,7 +7,7 @@
 #include <math.h>
 #include <algorithm> 
 using namespace std;
-#define DEPTH 4
+#define DEPTH 4 
 class MinMax
 {
 public:
