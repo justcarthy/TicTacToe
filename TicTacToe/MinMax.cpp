@@ -124,7 +124,7 @@ void MinMax::setMinMax(Color c)
 	}
 	else {
 		Max = c;
-		Min = Color::WHITE;
+		Min = Color::RED;
 	}
 
 }
